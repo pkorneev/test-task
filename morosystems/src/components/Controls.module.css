@@ -1,0 +1,39 @@
+.controlsWrapper{
+    margin-top: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.controlsContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 500px;
+}
+.filterButtons{
+    display: flex;
+    gap: .5rem;
+}
+.deleteBtn{
+    cursor: pointer;
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    padding: .5rem;
+}
+.filterButtons button{
+    padding: .5rem;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border: 1px solid transparent;
+    transition: all .2s linear;
+}
+.filterButtons button:hover {
+    border: 1px solid black;
+}
+.filterBtn.chosen{
+    border: 1px solid black;
+}

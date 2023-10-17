@@ -1,0 +1,64 @@
+.listElem{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 16px;
+    max-width: 500px;
+    padding: 1rem;
+    border: 1px solid black;
+}
+.checkboxWithText{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: calc(100% - 101px);
+}
+.checkboxWithText input {
+    width: fit-content;
+}
+.listElem p {
+    width: 100%;
+    word-wrap: break-word;
+}
+.listElem button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+.listElem button:hover{
+    scale: 1.05;
+}
+.buttons{
+    display: flex;
+    gap: .5rem;
+}
+.listElem.checked{
+    background-color: rgb(235, 235, 235);
+    text-decoration: line-through;
+}
+.li{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.editModeWrapper{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.editModeWrapper input{
+    flex: 4;
+}
+.editModeWrapper button{
+    flex: 1;
+    height: 100%;
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    font-size: 1.125rem;
+    cursor: pointer;
+}
