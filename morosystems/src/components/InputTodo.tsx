@@ -3,6 +3,7 @@ import { useContext, useState, ChangeEvent, FormEvent } from "react";
 import { MyContext } from "../App";
 import Wrapper from "../ui/Wrapper";
 import styles from "./InputTodo.module.css";
+import { v4 as uuidv4 } from "uuid";
 
 const InputTodo: React.FC = () => {
   const { setTodos } = useContext(MyContext);
@@ -12,18 +13,12 @@ const InputTodo: React.FC = () => {
   const inputChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setTodo(event.target.value);
   };
-  const uniqueid = () => {
-    const timestamp = new Date().getTime();
-    const random = Math.random().toString(36).substring(2);
-    return `${timestamp}-${random}`;
-  };
-  //on form submit we adding new todo element
   //at the start of todos array in context and clearing an input-field
   const onSubmitHandler = (event: FormEvent) => {
     event.preventDefault();
     if (todo.trim().length >= 1) {
       const newTodo = {
-        id: uniqueid(),
+        id: uuidv4(),
         name: todo,
         checked: false, //assuming a new todo is unchecked by default
         editing: false, //assuming a new todo is not in edit mode by default

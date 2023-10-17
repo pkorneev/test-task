@@ -4,6 +4,7 @@ import { useContext, useState, ChangeEvent } from "react";
 import { MyContext } from "../App";
 import styles from "./ListOfTodos.module.css";
 import { lastClickedState } from "../App";
+
 const ListOfTodos: React.FC<{ lastClicked: lastClickedState }> = ({
   lastClicked,
 }) => {
@@ -25,13 +26,13 @@ const ListOfTodos: React.FC<{ lastClicked: lastClickedState }> = ({
     );
     setTodos(updatedTodos);
   };
-
+  //function to controll witch exact element we are editing
   const onEditHandler = (index: number, value: boolean) => {
     const updatedEditingModes = [...editingModes];
     updatedEditingModes[index] = value;
     setEditingModes(updatedEditingModes);
   };
-
+  //save freshly edited elements to the todos array of todos
   const editInputHandler = (
     event: ChangeEvent<HTMLInputElement>,
     elemName: string
@@ -42,8 +43,9 @@ const ListOfTodos: React.FC<{ lastClicked: lastClickedState }> = ({
 
     setTodos(updatedTodos);
   };
-  let filteredTodos = [...todos];
 
+  //some filtering logic
+  let filteredTodos = [...todos];
   if (lastClicked === lastClickedState.Active) {
     filteredTodos = todos.filter((todo) => !todo.checked);
   } else if (lastClicked === lastClickedState.Completed) {
@@ -52,7 +54,7 @@ const ListOfTodos: React.FC<{ lastClicked: lastClickedState }> = ({
 
   return filteredTodos.map((elem, index) => {
     return (
-      <li key={`list-item-${elem.id}-${index}`} className={styles.li}>
+      <li key={`list-item-${elem.id}`} className={styles.li}>
         {!editingModes[index] ? (
           <div
             className={

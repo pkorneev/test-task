@@ -9,7 +9,7 @@ const Controls: React.FC<{
   lastClicked: lastClickedState;
 }> = ({ onFilter, lastClicked }) => {
   const { setTodos } = useContext(MyContext);
-
+  //delete all completed (checked) elements
   const deleteHandler = () => {
     setTodos((prev) => prev.filter((todo) => !todo.checked));
   };

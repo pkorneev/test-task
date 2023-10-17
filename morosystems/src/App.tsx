@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import Todos from "./components/Todos";
 import InputTodo from "./components/InputTodo";
 import Controls from "./components/Controls";
@@ -29,15 +29,33 @@ const App: React.FC = () => {
   const [lastClicked, setLastClicked] = useState<lastClickedState>(
     lastClickedState.All
   ); //saving chosen filter
-  const [todos, setTodos] = useState<ITodo[]>([
-    { id: "dqdwdqw", name: "Buy some food", checked: false, editing: false },
-    {
-      id: "dqdqwdqsa1",
-      name: "Finish test task from MoroSystems",
-      checked: false,
-      editing: false,
-    },
-  ]);
+  const [todos, setTodos] = useState<ITodo[]>(() => {
+    const storedTodos = localStorage.getItem("todos");
+    if (storedTodos) {
+      return JSON.parse(storedTodos);
+    }
+
+    // If there are no stored todos, use your initial hardcoded todos as a fallback
+    return [
+      { id: "dqdwdqw", name: "Buy some food", checked: false, editing: false },
+      {
+        id: "dqdqwdqsa1",
+        name: "Finish the test task from MoroSystems",
+        checked: false,
+        editing: false,
+      },
+    ];
+  });
+  useEffect(() => {
+    const storedTodos = localStorage.getItem("todos");
+    if (storedTodos) {
+      setTodos(JSON.parse(storedTodos));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
   //updating chosen filter
   const onFilterHandler = (
     event: React.MouseEvent<HTMLButtonElement>

@@ -8,9 +8,7 @@ const Todos: React.FC<{ lastClicked: lastClickedState }> = ({
   lastClicked,
 }) => {
   const { todos } = useContext(MyContext);
-
-  //deleting element by filtering the whole array
-
+  //counting active elements
   let activeTodos = todos.reduce(
     (count, elem) => (elem.checked ? count : count + 1),
     0
