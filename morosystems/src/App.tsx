@@ -35,7 +35,7 @@ const App: React.FC = () => {
       return JSON.parse(storedTodos);
     }
 
-    // If there are no stored todos, use your initial hardcoded todos as a fallback
+    //if there are no stored todos than use initial hardcoded todos as a fallback
     return [
       { id: "dqdwdqw", name: "Buy some food", checked: false, editing: false },
       {
